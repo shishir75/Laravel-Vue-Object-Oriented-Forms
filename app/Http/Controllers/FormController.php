@@ -2,7 +2,9 @@
 
 namespace App\Http\Controllers;
 
+use App\Form;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Validator;
 
 class FormController extends Controller
 {
@@ -34,7 +36,29 @@ class FormController extends Controller
      */
     public function store(Request $request)
     {
-        return $request;
+        $inputs = $request->except('token');
+        $rules = [
+            'name' => 'required',
+            'description' => 'required',
+        ];
+
+        $validator = Validator::make($inputs, $rules);
+
+        if ($validator->fails())
+        {
+            return redirect()->back()->withErrors($validator)->withInput();
+        }
+
+
+        $form = new Form();
+        $form->name = $request->input('name');
+        $form->description = $request->input('description');
+        $form->save();
+
+
+        return ['message' => 'Data Created'];
+
+
     }
 
     /**
