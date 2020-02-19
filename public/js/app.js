@@ -34,8 +34,6 @@ class Errors {
         delete this.errors[field];
     }
 
-
-
 }
 
 
@@ -44,12 +42,11 @@ new Vue({
 
    el: '#app',
 
-
-    data: {
+   data: {
         name : '',
         description : '',
         errors: new Errors(),
-    },
+   },
 
    methods: {
        onsubmit() {
@@ -63,7 +60,8 @@ new Vue({
 
            alert(response.data.message);
 
-           form.reset();
+           this.name = '';
+           this.description = '';
        }
 
    }
