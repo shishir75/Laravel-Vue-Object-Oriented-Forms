@@ -37,7 +37,7 @@ class FormController extends Controller
     public function store(Request $request)
     {
         $rules = [
-            'name' => 'required',
+            'name' => 'required | unique:forms',
             'description' => 'required',
         ];
 

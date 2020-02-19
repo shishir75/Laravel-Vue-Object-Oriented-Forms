@@ -25,14 +25,17 @@
                         <div class="form-group">
                             <label for="name">Name</label>
                             <input type="text" class="form-control" id="name" name="name" v-model="name" placeholder="Enter Name">
-                            <span class="text-danger small" v-text="errors.get('name')"></span>
+                            <span class="text-danger small" v-if="errors.has('name')" v-text="errors.get('name')"></span>
                         </div>
+
                         <div class="form-group">
                             <label for="description">Description</label>
                             <input type="text" class="form-control" id="description" name="description" v-model="description" placeholder="Enter Description">
-                            <span class="text-danger small" v-text="errors.get('description')"></span>
+                            <span class="text-danger small" v-if="errors.has('description')" v-text="errors.get('description')"></span>
                         </div>
-                        <button type="submit" class="btn btn-primary">Submit</button>
+
+                        <button type="submit" class="btn btn-primary" :disabled="errors.any()">Submit</button>
+
                     </form>
                 </div>
             </div>
