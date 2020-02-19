@@ -15,19 +15,22 @@
     </head>
     <body>
 
-        <div class="container mt-5 p-4 bg-secondary rounded">
+        <div id="app" class="container mt-5 p-4 bg-secondary rounded">
             <div class="row">
                 <div class="col-12">
                     <h3 class="text-center my-3">Laravel-Vue: Object Oriented Forms</h3>
-                    <form method="post" action="{{ route('form.store') }}">
+
+                    <form method="post" action="{{ route('form.store') }}" @submit.prevent="onsubmit" @keydown="errors.clear($event.target.name)">
                         @csrf
                         <div class="form-group">
                             <label for="name">Name</label>
-                            <input type="text" class="form-control" id="name" name="name" placeholder="Enter Name">
+                            <input type="text" class="form-control" id="name" name="name" v-model="name" placeholder="Enter Name">
+                            <span class="text-danger small" v-text="errors.get('name')"></span>
                         </div>
                         <div class="form-group">
                             <label for="description">Description</label>
-                            <input type="text" class="form-control" id="description" name="description" placeholder="Enter Description">
+                            <input type="text" class="form-control" id="description" name="description" v-model="description" placeholder="Enter Description">
+                            <span class="text-danger small" v-text="errors.get('description')"></span>
                         </div>
                         <button type="submit" class="btn btn-primary">Submit</button>
                     </form>

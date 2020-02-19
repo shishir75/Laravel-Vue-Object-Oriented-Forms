@@ -36,19 +36,12 @@ class FormController extends Controller
      */
     public function store(Request $request)
     {
-        $inputs = $request->except('token');
         $rules = [
             'name' => 'required',
             'description' => 'required',
         ];
 
-        $validator = Validator::make($inputs, $rules);
-
-        if ($validator->fails())
-        {
-            return redirect()->back()->withErrors($validator)->withInput();
-        }
-
+        $this->validate($request, $rules);
 
         $form = new Form();
         $form->name = $request->input('name');
