@@ -55,8 +55,15 @@ new Vue({
        onsubmit() {
 
            axios.post('/form', this.$data)
-               .then(response => alert('Success'))
+               .then(this.onSuccess)
                .catch(error => this.errors.record(error.response.data.errors));
+       },
+
+       onSuccess(response) {
+
+           alert(response.data.message);
+
+           form.reset();
        }
 
    }
