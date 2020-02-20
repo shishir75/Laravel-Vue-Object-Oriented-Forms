@@ -20,21 +20,21 @@
                 <div class="col-12">
                     <h3 class="text-center my-3">Laravel-Vue: Object Oriented Forms</h3>
 
-                    <form method="post" action="{{ route('form.store') }}" @submit.prevent="onSubmit" @keydown="form.errors.clear($event.target.name)">
+                    <form method="post" action="{{ route('form.store') }}" @submit.prevent="onSubmit" @keydown="errors.clear($event.target.name)">
                         @csrf
                         <div class="form-group">
                             <label for="name">Name</label>
                             <input type="text" class="form-control" id="name" name="name" v-model="form.name" placeholder="Enter Name">
-                            <span class="text-danger small" v-if="form.errors.has('name')" v-text="form.errors.get('name')"></span>
+                            <span class="text-danger small" v-if="form.errors.has('name')" v-text="errors.get('name')"></span>
                         </div>
 
                         <div class="form-group">
                             <label for="description">Description</label>
-                            <input type="text" class="form-control" id="description" name="description" v-model="form.description" placeholder="Enter Description">
-                            <span class="text-danger small" v-if="form.errors.has('description')" v-text="form.errors.get('description')"></span>
+                            <input type="text" class="form-control" id="description" name="description" v-model="description" placeholder="Enter Description">
+                            <span class="text-danger small" v-if="errors.has('description')" v-text="errors.get('description')"></span>
                         </div>
 
-                        <button type="submit" class="btn btn-primary" :disabled="form.errors.any()">Submit</button>
+                        <button type="submit" class="btn btn-primary" :disabled="errors.any()">Submit</button>
 
                     </form>
                 </div>
@@ -47,7 +47,7 @@
 
         <!-- development version, includes helpful console warnings -->
         <script src="https://cdn.jsdelivr.net/npm/vue/dist/vue.js"></script>
-        <script src="/js/app.js"></script>
+        <script src="/js/app_simple.js"></script>
 
 
     </body>
