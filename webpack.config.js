@@ -2,11 +2,14 @@ let webpack = require('webpack');
 let path = require('path');
 
 module.exports = {
-    entry: './resources/js/app.js',
+    entry: {
+        app: './resources/js/app.js',
+        vendor: ['vue', 'axios']
+    },
 
     output: {
         path: path.resolve(__dirname, 'public/js'),
-        filename: 'app.js',
+        filename: '[name].js',
         publicPath: './public'
     },
 
@@ -25,8 +28,6 @@ module.exports = {
             'vue$': 'vue/dist/vue.common.js' // 'vue/dist/vue.common.js' for webpack 1
         }
     },
-
-
 
     mode: 'development'
 
