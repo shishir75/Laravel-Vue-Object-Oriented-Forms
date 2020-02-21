@@ -16,8 +16,13 @@
     <body>
 
         <div id="app" class="container mt-5 p-4 bg-secondary rounded">
+
+            <example></example>
+
+
             <div class="row">
                 <div class="col-12">
+
                     <h3 class="text-center my-3">Laravel-Vue: Object Oriented Forms</h3>
 
                     <form method="post" action="{{ route('form.store') }}" @submit.prevent="onSubmit" @keydown="form.errors.clear($event.target.name)">

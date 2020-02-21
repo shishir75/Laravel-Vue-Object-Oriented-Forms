@@ -21,6 +21,8 @@ window.Vue = require('vue');
 
 //Vue.component('example-component', require('./components/ExampleComponent.vue').default);
 
+//Vue.component('example', require('./components/Example.js').default);
+
 /**
  * Next, we will create a fresh Vue application instance and attach it to
  * the page. Then, you may begin adding components to this application
@@ -35,6 +37,7 @@ import Vue from 'vue';
 import axios from "axios";
 
 import Form from "./core/Form";
+import Example from "./components/Example.js";
 
 
 window.axios = axios;
@@ -43,6 +46,10 @@ window.Form = Form;
 
 new Vue({
     el: '#app',
+
+    components: {
+        Example
+    },
 
     data: {
         form: new Form({
